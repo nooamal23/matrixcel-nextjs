@@ -73,7 +73,7 @@ export default function RootLayout({
         <Script src="/assets/js/script.js" strategy="lazyOnload" />
 
         {/* ===== INLINE SCRIPT: Force Mobile Menu on Mobile ===== */}
-        <script
+        {/*<script
           dangerouslySetInnerHTML={{
             __html: `
               document.addEventListener('DOMContentLoaded', function () {
@@ -108,7 +108,7 @@ export default function RootLayout({
               });
             `,
           }}
-        />
+        />*/}
       </body>
     </html>
   );
