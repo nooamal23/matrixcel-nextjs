@@ -33,7 +33,7 @@ export default function RootLayout({
         <link href="/assets/css/jquery-ui.css" rel="stylesheet" />
         <link href="/assets/css/nice-select.css" rel="stylesheet" />
         <link href="/assets/css/color/theme-color.css" rel="stylesheet" id="jssDefault" />
-        <link href="/assets/css/switcher-style.css" rel="stylesheet" />
+       {/* <link href="/assets/css/switcher-style.css" rel="stylesheet" />*/}
         <link href="/assets/css/style.css" rel="stylesheet" />
         <link href="/assets/css/responsive.css" rel="stylesheet" />
       </head>
@@ -60,7 +60,7 @@ export default function RootLayout({
         <Script src="/assets/js/appear.js" strategy="lazyOnload" />
         <Script src="/assets/js/scrollbar.js" strategy="lazyOnload" />
         <Script src="/assets/js/isotope.js" strategy="lazyOnload" />
-        <Script src="/assets/js/jQuery.style.switcher.min.js" strategy="lazyOnload" />
+        {/*<Script src="/assets/js/jQuery.style.switcher.min.js" strategy="lazyOnload" />*/}
         <Script src="/assets/js/product-filter.js" strategy="lazyOnload" />
 
         {/* Google Maps */}

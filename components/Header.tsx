@@ -47,7 +47,7 @@ export default function Header() {
       )}
 
       {/* Color Switcher */}
-      <div className="switcher">
+      {/*<div className="switcher">
         <div className="switch_btn">
           <button><i className="fas fa-palette"></i></button>
         </div>
@@ -62,7 +62,7 @@ export default function Header() {
             </ul>
           </div>
         </div>
-      </div>
+      </div>*/}
 
       {/* Main Header */}
       <header className="main-header">
