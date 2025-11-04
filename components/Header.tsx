@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import StickyHeader from './StickyHeader';
-import MobileMenu from './MobileMenu';
+//import MobileMenu from './MobileMenu';
 
 export default function Header() {
   const pathname = usePathname(); // Get current route
@@ -157,7 +157,7 @@ export default function Header() {
         <StickyHeader />
 
         {/* Mobile Menu */}
-        <MobileMenu />
+        {/*<MobileMenu />*/}
       </header>
     </>
   );

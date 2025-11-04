@@ -19,16 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Favicon - Fixed path */}
         <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon" />
-
-        {/* Google Fonts - Exact match */}
         <link
           href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
           rel="stylesheet"
         />
-
-        {/* All CSS - Exact order from template */}
         <link href="/assets/css/font-awesome-all.css" rel="stylesheet" />
         <link href="/assets/css/flaticon.css" rel="stylesheet" />
         <link href="/assets/css/owl.css" rel="stylesheet" />
@@ -50,32 +45,17 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
 
-        {/* jQuery Plugins - Exact load order preserved */}
-        {/* Critical: Load before React hydration */}
-        <Script
-          src="/assets/js/jquery.js"
-          strategy="beforeInteractive"
-        />
+        {/* ===== SCRIPTS (NO onLoad!) ===== */}
+        <Script src="/assets/js/jquery.js" strategy="beforeInteractive" />
+        <Script src="/assets/js/popper.min.js" strategy="afterInteractive" />
+        <Script src="/assets/js/bootstrap.min.js" strategy="afterInteractive" />
+        <Script src="/assets/js/jquery-ui.js" strategy="afterInteractive" />
+        <Script src="/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" />
 
-        {/* UI Foundations: Load after jQuery, before most content */}
-        <Script
-          src="/assets/js/popper.min.js"
-          strategy="afterInteractive"
-        />
-        <Script
-          src="/assets/js/bootstrap.min.js"
-          strategy="afterInteractive"
-        />
-        <Script
-          src="/assets/js/jquery-ui.js"
-          strategy="afterInteractive"
-        />
-        <Script
-          src="/assets/js/jquery.nice-select.min.js"
-          strategy="afterInteractive"
-        />
+        {/* nav-tool.js – Loaded early, no onLoad */}
+        <Script src="/assets/js/nav-tool.js" strategy="afterInteractive" />
 
-        {/* Plugins: Lazy load (non-blocking) */}
+        {/* Lazy plugins */}
         <Script src="/assets/js/owl.js" strategy="lazyOnload" />
         <Script src="/assets/js/wow.js" strategy="lazyOnload" />
         <Script src="/assets/js/validation.js" strategy="lazyOnload" />
@@ -85,19 +65,39 @@ export default function RootLayout({
         <Script src="/assets/js/isotope.js" strategy="lazyOnload" />
         <Script src="/assets/js/jQuery.style.switcher.min.js" strategy="lazyOnload" />
         <Script src="/assets/js/product-filter.js" strategy="lazyOnload" />
-        <Script src="/assets/js/nav-tool.js" strategy="lazyOnload" />
 
-        {/* Google Maps - Only if needed (loaded globally for simplicity) */}
-        {/* ⚠️ WARNING: Replace with your own API key in production! */}
+        {/* Google Maps */}
         <Script
           src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-CE0deH3Jhj6GN4YvdCFZS7DpbXexzGU"
           strategy="lazyOnload"
         />
         <Script src="/assets/js/gmaps.js" strategy="lazyOnload" />
         <Script src="/assets/js/map-helper.js" strategy="lazyOnload" />
-
-        {/* Main script - Last! */}
         <Script src="/assets/js/script.js" strategy="lazyOnload" />
+
+        {/* ===== INLINE SCRIPT: Mobile Menu Fix (Runs After DOM) ===== */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              document.addEventListener('DOMContentLoaded', function () {
+                if (window.innerWidth <= 991) {
+                  const toggler = document.querySelector('.mobile-nav-toggler');
+                  const menu = document.querySelector('.mobile-menu');
+                  if (toggler && menu) {
+                    toggler.addEventListener('click', function (e) {
+                      e.preventDefault();
+                      menu.classList.toggle('active');
+                    });
+                    // Close on link click
+                    menu.querySelectorAll('a').forEach(link => {
+                      link.addEventListener('click', () => menu.classList.remove('active'));
+                    });
+                  }
+                }
+              });
+            `,
+          }}
+        />
       </body>
     </html>
   );
