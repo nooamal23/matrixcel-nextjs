@@ -139,7 +139,7 @@ export default function SignUpPage() {
                       <div className="othre-text">
                         <p>
                           Already have an account?{' '}
-                          <Link href="/signin">Sign in</Link>
+                          <Link href="/auth/signin">Sign in</Link>
                         </p>
                       </div>
                     </div>

@@ -103,7 +103,7 @@ export default function SignInPage() {
                       <div className="othre-text">
                         <p>
                           Have not any account?{' '}
-                          <Link href="/signup">Register Now</Link>
+                          <Link href="/auth/signup">Register Now</Link>
                         </p>
                       </div>
                     </div>
