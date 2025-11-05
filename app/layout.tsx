@@ -19,11 +19,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Favicon - Fixed path */}
         <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon" />
+
+        {/* Google Fonts - Exact match */}
         <link
           href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
           rel="stylesheet"
         />
+
+        {/* All CSS - Exact order from template */}
         <link href="/assets/css/font-awesome-all.css" rel="stylesheet" />
         <link href="/assets/css/flaticon.css" rel="stylesheet" />
         <link href="/assets/css/owl.css" rel="stylesheet" />
@@ -33,7 +38,7 @@ export default function RootLayout({
         <link href="/assets/css/jquery-ui.css" rel="stylesheet" />
         <link href="/assets/css/nice-select.css" rel="stylesheet" />
         <link href="/assets/css/color/theme-color.css" rel="stylesheet" id="jssDefault" />
-       {/* <link href="/assets/css/switcher-style.css" rel="stylesheet" />*/}
+        {/*<link href="/assets/css/switcher-style.css" rel="stylesheet" />*/}
         <link href="/assets/css/style.css" rel="stylesheet" />
         <link href="/assets/css/responsive.css" rel="stylesheet" />
       </head>
@@ -45,70 +50,54 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
 
-        {/* ===== CRITICAL: jQuery & nav-tool.js EARLY ===== */}
-        <Script src="/assets/js/jquery.js" strategy="beforeInteractive" />
-        <Script src="/assets/js/popper.min.js" strategy="afterInteractive" />
-        <Script src="/assets/js/bootstrap.min.js" strategy="afterInteractive" />
+        {/* jQuery Plugins - Exact load order preserved */}
+        {/* Critical: Load before React hydration */}
+        <Script
+          src="/assets/js/jquery.js"
+          strategy="beforeInteractive"
+        />
 
-        {/* nav-tool.js MUST load early */}
-        <Script src="/assets/js/nav-tool.js" strategy="afterInteractive" />
+        {/* UI Foundations: Load after jQuery, before most content */}
+        <Script
+          src="/assets/js/popper.min.js"
+          strategy="afterInteractive"
+        />
+        <Script
+          src="/assets/js/bootstrap.min.js"
+          strategy="afterInteractive"
+        />
+        <Script
+          src="/assets/js/jquery-ui.js"
+          strategy="afterInteractive"
+        />
+        <Script
+          src="/assets/js/jquery.nice-select.min.js"
+          strategy="afterInteractive"
+        />
 
-        {/* Other plugins (lazy) */}
+        {/* Plugins: Lazy load (non-blocking) */}
         <Script src="/assets/js/owl.js" strategy="lazyOnload" />
         <Script src="/assets/js/wow.js" strategy="lazyOnload" />
+        <Script src="/assets/js/validation.js" strategy="lazyOnload" />
         <Script src="/assets/js/jquery.fancybox.js" strategy="lazyOnload" />
         <Script src="/assets/js/appear.js" strategy="lazyOnload" />
         <Script src="/assets/js/scrollbar.js" strategy="lazyOnload" />
         <Script src="/assets/js/isotope.js" strategy="lazyOnload" />
-        {/*<Script src="/assets/js/jQuery.style.switcher.min.js" strategy="lazyOnload" />*/}
+       {/* <Script src="/assets/js/jQuery.style.switcher.min.js" strategy="lazyOnload" />*/}
         <Script src="/assets/js/product-filter.js" strategy="lazyOnload" />
+        <Script src="/assets/js/nav-tool.js" strategy="lazyOnload" />
 
-        {/* Google Maps */}
+        {/* Google Maps - Only if needed (loaded globally for simplicity) */}
+        {/* ⚠️ WARNING: Replace with your own API key in production! */}
         <Script
           src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-CE0deH3Jhj6GN4YvdCFZS7DpbXexzGU"
           strategy="lazyOnload"
         />
         <Script src="/assets/js/gmaps.js" strategy="lazyOnload" />
         <Script src="/assets/js/map-helper.js" strategy="lazyOnload" />
+
+        {/* Main script - Last! */}
         <Script src="/assets/js/script.js" strategy="lazyOnload" />
-
-        {/* ===== INLINE SCRIPT: Force Mobile Menu on Mobile ===== */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              document.addEventListener('DOMContentLoaded', function () {
-                // Only run on mobile
-                if (window.innerWidth <= 991) {
-                  const toggler = document.querySelector('.mobile-nav-toggler');
-                  const menu = document.querySelector('.mobile-menu');
-                  const closeBtn = document.querySelector('.close-btn');
-                  const backdrop = document.querySelector('.menu-backdrop');
-
-                  if (toggler && menu) {
-                    // Open menu
-                    toggler.addEventListener('click', function (e) {
-                      e.preventDefault();
-                      menu.classList.add('active');
-                    });
-
-                    // Close on X, backdrop, or link
-                    [closeBtn, backdrop].forEach(el => {
-                      if (el) el.addEventListener('click', () => {
-                        menu.classList.remove('active');
-                      });
-                    });
-
-                    menu.querySelectorAll('a').forEach(link => {
-                      link.addEventListener('click', () => {
-                        menu.classList.remove('active');
-                      });
-                    });
-                  }
-                }
-              });
-            `,
-          }}
-        />
       </body>
     </html>
   );
