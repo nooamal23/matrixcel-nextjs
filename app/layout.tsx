@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import MobileMenu from '@/components/MobileMenu';
 import StickyHeader from '@/components/StickyHeader';
+import ScrollToTop from '@/components/ScrollToTop';
 
 export const metadata: Metadata = {
   title: 'Matrixcel Business',
@@ -46,6 +47,7 @@ export default function RootLayout({
       <body>
         <Header />
         <StickyHeader />
+        <ScrollToTop />
         <MobileMenu />
         <main>{children}</main>
         <Footer />

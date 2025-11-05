@@ -106,12 +106,12 @@ export default function Header() {
 
               {/* Menu Area */}
               <div className="menu-area clearfix">
-                {/* Mobile Toggler */}
+                {/* Mobile Toggler 
                 <div className="mobile-nav-toggler">
                   <i className="icon-bar"></i>
                   <i className="icon-bar"></i>
                   <i className="icon-bar"></i>
-                </div>
+                </div>*/}
 
                {/* Main Menu */}
 <nav className="main-menu navbar-expand-md navbar-light">
