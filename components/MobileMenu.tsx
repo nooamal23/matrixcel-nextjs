@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
 export default function MobileMenu() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const pathname = usePathname();
 
   // Close menu when route changes
