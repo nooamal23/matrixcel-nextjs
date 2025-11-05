@@ -1343,6 +1343,12 @@ img {
   -ms-transform:rotate(360deg);
   transform:rotate(360deg);
 }
+/*imen*/
+.mobile-menu-visible .mobile-menu .close-btn {
+  color: #fff !important;
+  opacity: 1 !important;
+  z-index: 9999 !important;
+}
 
 .mobile-menu .close-btn:hover{
   -webkit-transform:rotate(90deg);
