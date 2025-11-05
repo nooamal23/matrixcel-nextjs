@@ -1241,14 +1241,13 @@ img {
   right: 0;
   top: 0;
   width: 300px;
-  padding-right:0;
-  max-width:300px;
+  padding-right:30px;
+  max-width:100%;
   height: 100%;
   opacity: 0;
   visibility: hidden;
   z-index: 999999;
   transition: all 900ms ease;
-  overflow-x: hidden;
 }
 
 .mobile-menu .navbar-collapse{
@@ -1285,7 +1284,7 @@ img {
 .mobile-menu-visible .mobile-menu .menu-backdrop{
   opacity: 0.70;
   visibility: visible;
-  right: 0;
+  right: 100%;
   -webkit-transition: all .8s ease-out 0s;
   -o-transition: all .8s ease-out 0s
 }
@@ -9825,4 +9824,9 @@ div#mCSB_1_container{
 
 .search-field .top-search .search-btn button i{
   margin-right: 8px;
+}
+
+
+html, body {
+  overflow-x: hidden !important;
 }
