@@ -106,17 +106,17 @@ export default function Header() {
 
               {/* Menu Area */}
               <div className="menu-area clearfix">
-                {/* Mobile Toggler – Triggers menu via body class */}
-<div className="mobile-nav-toggler" onClick={() => document.body.classList.add('mobile-menu-visible')}>
-  <i className="icon-bar"></i>
-  <i className="icon-bar"></i>
-  <i className="icon-bar"></i>
-</div>
+                {/* Mobile Toggler */}
+                <div className="mobile-nav-toggler">
+                  <i className="icon-bar"></i>
+                  <i className="icon-bar"></i>
+                  <i className="icon-bar"></i>
+                </div>
 
                {/* Main Menu */}
 <nav className="main-menu navbar-expand-md navbar-light">
   <div className="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
-    <ul className="navigation clearfix" id="main-navigation">
+    <ul className="navigation clearfix">
       <li className={isActive('/')}>
         <Link href="/"><span>Home</span></Link>
       </li>

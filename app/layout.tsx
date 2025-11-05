@@ -85,32 +85,7 @@ export default function RootLayout({
         <Script src="/assets/js/isotope.js" strategy="lazyOnload" />
        {/* <Script src="/assets/js/jQuery.style.switcher.min.js" strategy="lazyOnload" />*/}
         <Script src="/assets/js/product-filter.js" strategy="lazyOnload" />
-        {/*<Script src="/assets/js/nav-tool.js" strategy="lazyOnload" />*/}
-
-        <Script
-  id="nav-tool-loader"
-  strategy="afterInteractive"
-  dangerouslySetInnerHTML={{
-    __html: `
-      document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(function() {
-          if (typeof $ !== 'undefined' && $('#main-navigation').length) {
-            // Clone menu only if it exists
-            if ($('.mobile-menu .menu-outer .navigation').length === 0) {
-              var nav = $('#main-navigation').clone();
-              nav.find('.current').removeClass('current');
-              $('.mobile-menu .menu-outer').html(nav);
-            }
-            // Re-init dropdowns
-            if (typeof $.fn.mobileMenu !== 'undefined') {
-              $('.mobile-menu .navigation').mobileMenu();
-            }
-          }
-        }, 100);
-      });
-    `,
-  }}
-/>
+        <Script src="/assets/js/nav-tool.js" strategy="lazyOnload" />
 
         {/* Google Maps - Only if needed (loaded globally for simplicity) */}
         {/* ⚠️ WARNING: Replace with your own API key in production! */}
