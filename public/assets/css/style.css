@@ -1236,7 +1236,7 @@ img {
   display: none;
 }
 
-.mobile-menu{
+/*.mobile-menu{
   position: fixed;
   right: 0;
   top: 0;
@@ -1248,6 +1248,20 @@ img {
   visibility: hidden;
   z-index: 999999;
   transition: all 900ms ease;
+}*/
+
+.mobile-menu {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%; /* Use full viewport width */
+  max-width: 300px; /* Cap at 300px for larger screens */
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 999999;
+  transition: all 900ms ease;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 .mobile-menu .navbar-collapse{
