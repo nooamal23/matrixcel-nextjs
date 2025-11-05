@@ -116,7 +116,7 @@ export default function Header() {
                {/* Main Menu */}
 <nav className="main-menu navbar-expand-md navbar-light">
   <div className="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
-    <ul className="navigation clearfix">
+    <ul className="navigation clearfix" id="main-navigation">
       <li className={isActive('/')}>
         <Link href="/"><span>Home</span></Link>
       </li>
