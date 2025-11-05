@@ -9827,6 +9827,27 @@ div#mCSB_1_container{
 }
 
 
+/* === FIX MOBILE MENU POSITION & OVERFLOW === */
 html, body {
   overflow-x: hidden !important;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0; /* anchor to left side */
+  width: 100%;
+  max-width: 300px;
+  height: 100%;
+  right: auto; /* override old rule */
+  padding-right: 0;
+  overflow-x: hidden;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.mobile-menu-visible .mobile-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
 }
