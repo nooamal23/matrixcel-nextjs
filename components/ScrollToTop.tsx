@@ -10,7 +10,6 @@ export default function ScrollToTop() {
     const handleScroll = () => {
       setShow(window.scrollY > 300);
     };
-
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);

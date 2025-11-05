@@ -4,29 +4,18 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
+import Navigation from './Navigation';
 
 export default function MobileMenu() {
-  const [isOpen, setIsOpen] = useState(true);
-  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
 
-  // Close menu when route changes
   useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
-
-  // Add/remove body class for scroll lock
-  useEffect(() => {
-    if (isOpen) {
-      document.body.classList.add('mobile-menu-visible');
-    } else {
-      document.body.classList.remove('mobile-menu-visible');
-    }
+    document.body.classList.toggle('mobile-menu-visible', isOpen);
   }, [isOpen]);
 
   return (
     <>
-      {/* Hamburger Button (put in Header) */}
+      {/* Hamburger Button */}
       <div
         className="mobile-nav-toggler"
         onClick={() => setIsOpen(true)}
@@ -37,11 +26,10 @@ export default function MobileMenu() {
         <i className="icon-bar"></i>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Panel */}
       <div className="mobile-menu">
         <div className="menu-backdrop" onClick={() => setIsOpen(false)}></div>
 
-        {/* Close Button */}
         <div className="close-btn" onClick={() => setIsOpen(false)}>
           <i className="fas fa-times"></i>
         </div>
@@ -59,30 +47,9 @@ export default function MobileMenu() {
             </Link>
           </div>
 
+          {/* Shared Menu */}
           <div className="menu-outer">
-            <ul className="navigation clearfix">
-              <li className={pathname === '/' ? 'current' : ''}>
-                <Link href="/" onClick={() => setIsOpen(false)}>Home</Link>
-              </li>
-              <li className={pathname === '/about' ? 'current' : ''}>
-                <Link href="/about" onClick={() => setIsOpen(false)}>About Us</Link>
-              </li>
-              <li className={pathname === '/services' ? 'current' : ''}>
-                <Link href="/services" onClick={() => setIsOpen(false)}>Our Services</Link>
-              </li>
-              <li className={pathname === '/industries' ? 'current' : ''}>
-                <Link href="/industries" onClick={() => setIsOpen(false)}>Industries</Link>
-              </li>
-              <li className={pathname === '/career' ? 'current' : ''}>
-                <Link href="/career" onClick={() => setIsOpen(false)}>Careers</Link>
-              </li>
-              <li className={pathname === '/blog' ? 'current' : ''}>
-                <Link href="/blog" onClick={() => setIsOpen(false)}>Insights</Link>
-              </li>
-              <li className={pathname === '/contact' ? 'current' : ''}>
-                <Link href="/contact" onClick={() => setIsOpen(false)}>Contact</Link>
-              </li>
-            </ul>
+            <Navigation onClick={() => setIsOpen(false)} />
           </div>
 
           <div className="contact-info">

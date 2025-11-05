@@ -4,11 +4,10 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import StickyHeader from './StickyHeader';
-//import MobileMenu from './MobileMenu';
+import Navigation from './Navigation';
 
 export default function Header() {
-  const pathname = usePathname(); // Get current route
+  const pathname = usePathname();
   const [showPreloader, setShowPreloader] = useState(true);
 
   useEffect(() => {
@@ -17,9 +16,6 @@ export default function Header() {
   }, []);
 
   const closePreloader = () => setShowPreloader(false);
-
-  // Helper: Check if link is active
-  const isActive = (path: string) => (pathname === path ? 'current' : '');
 
   return (
     <>
@@ -46,25 +42,6 @@ export default function Header() {
         </div>
       )}
 
-      {/* Color Switcher */}
-      {/*<div className="switcher">
-        <div className="switch_btn">
-          <button><i className="fas fa-palette"></i></button>
-        </div>
-        <div className="switch_menu">
-          <div className="switcher_container">
-            <ul id="styleOptions" title="switch styling">
-              <li><a href="javascript:void(0)" data-theme="green" className="green-color"></a></li>
-              <li><a href="javascript:void(0)" data-theme="pink" className="pink-color"></a></li>
-              <li><a href="javascript:void(0)" data-theme="violet" className="violet-color"></a></li>
-              <li><a href="javascript:void(0)" data-theme="crimson" className="crimson-color"></a></li>
-              <li><a href="javascript:void(0)" data-theme="orange" className="orange-color"></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>*/}
-
-      {/* Main Header */}
       <header className="main-header">
         {/* Header Top */}
         <div className="header-top">
@@ -91,11 +68,10 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Header Lower – Full Navbar */}
+        {/* Header Lower */}
         <div className="header-lower">
           <div className="outer-box">
             <div className="main-box">
-              {/* Logo */}
               <div className="logo-box">
                 <figure className="logo">
                   <Link href="/">
@@ -104,46 +80,15 @@ export default function Header() {
                 </figure>
               </div>
 
-              {/* Menu Area */}
               <div className="menu-area clearfix">
-                {/* Mobile Toggler 
-                <div className="mobile-nav-toggler">
-                  <i className="icon-bar"></i>
-                  <i className="icon-bar"></i>
-                  <i className="icon-bar"></i>
-                </div>*/}
-
-               {/* Main Menu */}
-<nav className="main-menu navbar-expand-md navbar-light">
-  <div className="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
-    <ul className="navigation clearfix">
-      <li className={isActive('/')}>
-        <Link href="/"><span>Home</span></Link>
-      </li>
-      <li className={isActive('/about')}>
-        <Link href="/about"><span>About Us</span></Link>
-      </li>
-      <li className={isActive('/services')}>
-        <Link href="/services"><span>Our Services</span></Link>
-      </li>
-      <li className={isActive('/industries')}>
-        <Link href="/industries"><span>Industries</span></Link>
-      </li>
-      <li className={isActive('/career')}>
-        <Link href="/career"><span>Careers</span></Link>
-      </li>
-      <li className={isActive('/blog')}>
-        <Link href="/blog"><span>Insights</span></Link>
-      </li>
-      <li className={isActive('/contact')}>
-        <Link href="/contact"><span>Contact</span></Link>
-      </li>
-    </ul>
-  </div>
-</nav>
+                {/* Desktop Menu */}
+                <nav className="main-menu navbar-expand-md navbar-light">
+                  <div className="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                    <Navigation />
+                  </div>
+                </nav>
               </div>
 
-              {/* Signup Button */}
               <div className="btn-box">
                 <Link href="/auth/signup" className="theme-btn btn-one">
                   Signup
@@ -152,12 +97,6 @@ export default function Header() {
             </div>
           </div>
         </div>
-
-        {/* Sticky Header (on scroll) */}
-        <StickyHeader />
-
-        {/* Mobile Menu */}
-        {/*<MobileMenu />*/}
       </header>
     </>
   );
